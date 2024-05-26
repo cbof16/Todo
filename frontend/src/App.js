@@ -90,16 +90,24 @@ const App = () => {
           </button>
         </div>
         <div className="input-list">
-        <ul>
-        {tasks.map(task => (
-          <li key={task._id}>
-            {task.name} (Due: {new Date(task.dueDate).toLocaleDateString()})
-            <button onClick={() => deleteTask(task._id)}>
-              <SlTrash size={18} />
-            </button>
-          </li>
-        ))}
-      </ul>
+        <ul className="todo-list">
+            {tasks && tasks.length > 0 ? (
+              tasks.map(task => (
+                <li className="todo" key={task._id}>
+                  {task.name} (Due: {new Date(task.dueDate).toLocaleDateString()})
+                  <button className="delete-button" onClick={() => deleteTask(task._id)}>
+                    <SlTrash size={18} />
+                  </button>
+                  <button className="edit-button" onClick={() => startEditing(task)}>
+                    <FaEdit size={18} />
+                  </button>
+                </li>
+              ))
+            ) : (
+              <li>No tasks available</li>
+            )}
+          </ul>
+
         </div>
       </div>
     </div>
