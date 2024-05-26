@@ -8,10 +8,16 @@ require('dotenv').config() //to process the .env file using package
 
 
 
-const port = 5001
+const port = 5001;
 
 //middleware
-app.use(cors())
+app.use(cors(
+    {
+        origin: 'https://todoaicerts-git-main-cbof16s-projects.vercel.app/',
+        methods: ['GET','POST','PATCH','DELETE'],
+        credentials: true
+    }
+))
 // app.use(express.static('./public'))
 app.use(express.json())
 

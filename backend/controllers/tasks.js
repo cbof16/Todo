@@ -1,6 +1,6 @@
 const Task = require('../models/Task');
 
-const getAllTasks = async (req, res) => {
+const getalltasks = async (req, res) => {
   try {
     const tasks = await Task.find({});
     res.status(201).json({ tasks });
@@ -9,7 +9,7 @@ const getAllTasks = async (req, res) => {
   }
 };
 
-const createTask = async (req, res) => {
+const createtask = async (req, res) => {
   try {
     const task = await Task.create(req.body);
     res.status(201).json({ task });
@@ -18,7 +18,7 @@ const createTask = async (req, res) => {
   }
 };
 
-const getTask = async (req, res) => {
+const gettask = async (req, res) => {
   try {
     const { id: taskID } = req.params;
     const task = await Task.findOne({ _id: taskID });
@@ -31,7 +31,7 @@ const getTask = async (req, res) => {
   }
 };
 
-const updateTask = async (req, res) => {
+const updatetask = async (req, res) => {
   try {
     const { id: taskID } = req.params;
     const task = await Task.findOneAndUpdate({ _id: taskID }, req.body, {
@@ -47,7 +47,7 @@ const updateTask = async (req, res) => {
   }
 };
 
-const deleteTask = async (req, res) => {
+const deletetask = async (req, res) => {
   try {
     const { id: taskID } = req.params;
     const task = await Task.findOneAndDelete({ _id: taskID });
@@ -60,4 +60,4 @@ const deleteTask = async (req, res) => {
   }
 };
 
-module.exports = { getAllTasks, createTask, getTask, updateTask, deleteTask };
+module.exports = { getalltasks,createtask,updatetask,gettask,deletetask };
